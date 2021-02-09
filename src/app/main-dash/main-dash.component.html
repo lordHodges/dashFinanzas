@@ -1,0 +1,35 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+  <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
+    <!--Mini Cards-->
+    <mat-grid-tile *ngFor="let i of [1, 2, 3, 4]" [colspan]="( cardLayout | async )?.miniCard.cols"
+      [rowspan]="( cardLayout | async )?.miniCard.rows">
+      <app-card title="Card {{i}}">
+        <p>minicard</p>
+      </app-card>
+    </mat-grid-tile>
+    <!--Charts-->
+    <mat-grid-tile [colspan]="( cardLayout | async )?.pie.cols" [rowspan]="( cardLayout | async )?.pie.rows">
+      <app-card title="Registro de Ingresos">
+        <app-grafico-registros-empresa [data]='data'></app-grafico-registros-empresa>
+        <h4>Total: $00000</h4>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="( cardLayout | async )?.pie.cols" [rowspan]="( cardLayout | async )?.pie.rows">
+      <app-card title="Registro de Egresos">
+        <app-grafico-registros-empresa></app-grafico-registros-empresa>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="( cardLayout | async )?.history.cols" [rowspan]="( cardLayout | async )?.history.rows">
+      <app-card title="Registro de Ingresos">
+        <app-history-empresas></app-history-empresas>
+      </app-card>
+    </mat-grid-tile>
+    <!--Table-->
+    <mat-grid-tile [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">
+      <app-card title="Card 9">
+        <div>Table Content Here</div>
+      </app-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
